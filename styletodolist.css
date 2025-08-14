@@ -302,7 +302,7 @@ input[type="checkbox"]:checked::after {
     margin-left: 8px;
   }
   #taskinput {
-    width: 100%;
+    width: 90%;
     box-sizing: border-box;
     font-size: 1rem;
     padding: 10px;
@@ -322,13 +322,13 @@ input[type="checkbox"]:checked::after {
     box-sizing: border-box;
   }
   #taskList li {
-    width: 100%;
+    width: 90%;
     box-sizing: border-box;
     flex-direction: row;
     justify-content: space-between;
     padding: 10px 4px;
     font-size: 0.95rem;
-    margin: 0;
+    margin-left: 20px;
   }
   #taskList li span {
       margin-right: 5px;

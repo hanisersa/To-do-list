@@ -106,9 +106,8 @@ function showtasks() {
         li.appendChild(removeBtn);
         taskList.appendChild(li);
     });
-    // Minimized progress
     let progress = document.getElementById('progress');
-    progress.textContent = `${completedCount}/${tasks.length} done`;
+progress.textContent = `done ${completedCount}/${tasks.length}`;
 }
 
 showtasks();
