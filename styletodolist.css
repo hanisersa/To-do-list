@@ -15,20 +15,18 @@ body.dark-mode  {
 /*--------------------------dark mode button-------------------------------------*/
 #theme-toggle {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    right: 10px;
+    top:9px;
     z-index: 1000;
-
-    width: 50px;         /* same width */
-    height: 50px;        /* and height for a circle */
-    border-radius: 50%;  /* makes it a circle */
-
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     background-color: #222;
     color: #fff;
     border: none;
     font-size: 22px;
     text-align: center;
-    line-height: 50px;   /* vertically center the icon */
+    line-height: 50px;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s, transform 0.3s;
@@ -44,6 +42,9 @@ body.dark-mode {
     color: #fff;
 }
 
+body.dark-mode .main-title {
+  color: #388e3c; 
+}
 /* Dark mode overrides */
 body.dark-mode .header,
 body.dark-mode h1 {
@@ -56,7 +57,7 @@ body.dark-mode #taskinput {
 }
 body.dark-mode #taskList li {
     background: #222;
-    color: #fff;
+    color: #4CAF50;;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 body.dark-mode input[type="checkbox"] {
@@ -74,6 +75,7 @@ body.dark-mode .remove-btn {
     color: #fff;
     box-shadow: 0 4px 12px rgba(255,77,77,0.5);
 }
+
 
 .container{
   display:flex;
@@ -104,7 +106,7 @@ body.dark-mode .remove-btn {
   border-radius: 2px;
 }
 
-h1 {
+.title {
     font-size: 2.5rem;
     color: #333;
     margin-bottom: 20px;
@@ -113,11 +115,25 @@ h1 {
     font-weight: 700;
     letter-spacing: 2px;
     text-shadow: 2px 4px 12px rgba(0,0,0,0.18);
-    margin-top: 32px;
+    margin-top: 15px;
     margin-left: 18px;
 }
+.main-title {
+    color: #238826;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 2px 4px 12px rgba(0,0,0,0.18);
+    margin-top: 6px;
+    margin-left: 15px;
+}
 #taskinput {
-    width: 350px;
+    margin-top:20px;
+    width: 400px;
+    height: 28px;
     padding: 12px 18px;
     border: none;
     border-radius: 25px;
@@ -132,8 +148,9 @@ h1 {
 .taskbutton {
   background: linear-gradient(135deg, #4CAF50, #45a049);
   color: white;
-  padding: 10px 12px;
+  padding: 13px 12px;
   border: none;
+  margin-top:20px;
   margin-left: 5px;
   border-radius: 25px;
   cursor: pointer;
@@ -187,6 +204,24 @@ h1 {
 .remove-btn:active {
     transform: translateY(0px);
     box-shadow: 0 3px 8px rgba(255, 77, 77, 0.3);
+}
+.star-btn {
+  font-size: 20px;
+  cursor: pointer;
+  color: #ffd700;
+  transition: transform 0.2s, color 0.2s;
+  vertical-align: middle;
+}
+
+.star-btn:hover {
+  transform: scale(1.2);
+  color: #ff9800;
+  filter: drop-shadow(0 0 4px #ffd700);
+}
+
+.star-btn:active {
+  transform: scale(1.1);
+  color: #ffc107;
 }
 
 #taskList {
@@ -255,24 +290,53 @@ input[type="checkbox"]:checked::after {
     transform: translate(-50%, -50%);
     font-size: 16px;
 }
+#taskList li[style*="background: #fffbe6"] {
+  border: 2px solid #ffd700;
+}
 
 /* Strike-through completed task text */
 #taskList li.completed span {
     text-decoration: line-through;
     color: #888;
+  }
+  
+  #progress {
+    font-size: 30px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+.footer {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #888;
+  letter-spacing: 1px;
+  background: #f5f5f5;
+  padding: 10px 0;
+  position: static;
+  left: 0;
+  bottom: 0;
+  margin-top: 260px;;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 999;
 }
-
-#progress {
-  font-size: 30px;
-  color: #555;
-  margin-top: 10px;
-}
-
-/* Mobile version (max width 600px) */
 @media (max-width: 600px) {
   body {
     padding: 0;
     margin: 0;
+  }
+  #theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    top: 8px;
+    right: 8px;
+    line-height: 36px;
   }
   .header {
     width: 100%;
@@ -303,6 +367,7 @@ input[type="checkbox"]:checked::after {
   }
   #taskinput {
     width: 90%;
+    height: 45px;
     box-sizing: border-box;
     font-size: 1rem;
     padding: 10px;
@@ -310,7 +375,6 @@ input[type="checkbox"]:checked::after {
   }
   .taskbutton {
     width: 90%;
-    padding: 10px;
     font-size: 1rem;
     margin-left: 0;
   }
@@ -343,14 +407,18 @@ input[type="checkbox"]:checked::after {
     padding: 8px 12px;
     font-size: 0.85rem;
   }
-}
-
-.footer {
-  width: 100%;
-  text-align: center;
-  font-size: 0.85rem;
-  color: #888;
-  margin-top: 32px;
-  margin-bottom: 12px;
-  letter-spacing: 1px;
+  .footer {
+    position: static;
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 8px 0;
+    margin-top: 182px;
+    margin-bottom: 0;
+    display: block;
+    background: #f5f5f5;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+  }
 }

@@ -11,9 +11,9 @@
 
  <body>
     <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-    <h1> To Do List </h1>
+    <h1 class="main-title"> To Do List </h1>
     <div class="header">
-    <h1>JUST DO IT .</h1>
+    <h1 class="title">JUST DO IT .</h1>
     <div class="container">
     <input type="text" id="taskinput" placeholder="add your task here" aria-label="Task input">
     <button onclick="addtask()" class="taskbutton" id="addtaskbutton">Add Task</button>
@@ -31,7 +31,7 @@ let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
 function addtask() {
     let taskinput = document.getElementById("taskinput").value.trim();
     if (taskinput === "") return;
-    tasks.push({text: taskinput, completed: false});
+    tasks.push({text: taskinput, completed: false, important: false});
     document.getElementById("taskinput").value = "";
     saveTasks();
     showtasks();
@@ -48,6 +48,7 @@ function saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
+// ...existing code...
 function showtasks() {
     let taskList = document.getElementById("taskList");
     taskList.innerHTML = "";
@@ -63,6 +64,16 @@ function showtasks() {
         checkbox.setAttribute('aria-label', 'Mark task completed');
         checkbox.onchange = function () {
             task.completed = checkbox.checked;
+            saveTasks();
+            showtasks();
+        };
+        // Star (important) button
+        let starBtn = document.createElement("span");
+        starBtn.textContent = task.important ? "⭐" : "☆";
+        starBtn.style.cursor = "pointer";
+        starBtn.className= "star-btn";
+        starBtn.onclick = function () {
+            task.important = !task.important;
             saveTasks();
             showtasks();
         };
@@ -100,16 +111,24 @@ function showtasks() {
             li.classList.add('completed');
             completedCount++;
         }
-        // Append
+        // Important style
+        if (task.important) {
+            li.style.background = "#fffbe6"; // light yellow for important
+        }
+        let actionDiv = document.createElement("div");
+        actionDiv.style.display = "flex";
+        actionDiv.style.alignItems = "center";
+        actionDiv.appendChild(starBtn);
+        actionDiv.appendChild(removeBtn);
+
         li.appendChild(checkbox);
         li.appendChild(taskText);
-        li.appendChild(removeBtn);
-        taskList.appendChild(li);
+        li.appendChild(actionDiv);
+         taskList.appendChild(li);
     });
     let progress = document.getElementById('progress');
-progress.textContent = `done ${completedCount}/${tasks.length}`;
+    progress.textContent = `done ${completedCount}/${tasks.length}`;
 }
-
 showtasks();
 
 document.getElementById("taskinput").addEventListener("keydown", function(e) {
