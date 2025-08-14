@@ -1,3 +1,13 @@
+@media (pointer: coarse) {
+  *:focus,
+  *:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
 body {
     background-color: #f5f5f5;  
     font-family: 'Montserrat', sans-serif;
@@ -336,16 +346,6 @@ input[type="checkbox"]:checked::after {
       padding: 0;
       margin: 0;
     }
-    #theme-toggle,
-  .taskbutton,
-  .remove-btn,
-  input[type="checkbox"],
-  #taskinput,
-  #taskList li,
-  .star-btn {
-    outline: none ;
-    box-shadow: none;
-  }
     #theme-toggle {
       width: 40px;
       height: 40px;
