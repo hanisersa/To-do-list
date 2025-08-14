@@ -1,0 +1,366 @@
+body {
+    background-color: #f5f5f5;  
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  body:not(.dark-mode) .service-col i {
+  color: #000;
+}
+
+/* Dark mode */
+body.dark-mode  {
+  color: #fff;
+}
+/*--------------------------dark mode button-------------------------------------*/
+#theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+
+    width: 50px;         /* same width */
+    height: 50px;        /* and height for a circle */
+    border-radius: 50%;  /* makes it a circle */
+
+    background-color: #222;
+    color: #fff;
+    border: none;
+    font-size: 22px;
+    text-align: center;
+    line-height: 50px;   /* vertically center the icon */
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: #444;
+    transform: scale(1.1);
+}
+
+body.dark-mode {
+    background: #080808;
+    color: #fff;
+}
+
+/* Dark mode overrides */
+body.dark-mode .header,
+body.dark-mode h1 {
+    color: #fff;
+}
+body.dark-mode #taskinput {
+    background: #222;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+body.dark-mode #taskList li {
+    background: #222;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+body.dark-mode input[type="checkbox"] {
+    background-color: #222;
+    border-color: #4CAF50;
+}
+body.dark-mode input[type="checkbox"]:checked {
+    background-color: #388e3c;
+}
+body.dark-mode #taskList li.completed span {
+    color: #bbb;
+}
+body.dark-mode .remove-btn {
+    background: linear-gradient(135deg, #e64545, #cc3c3c);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(255,77,77,0.5);
+}
+
+.container{
+  display:flex;
+  justify-content: center; 
+  align-items: center;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem; /* bigger title */
+  font-weight: 700; /* bold */
+  color: #333; /* dark grey for elegance */
+  letter-spacing: 1px; /* slight spacing for style */
+  text-transform: uppercase; /* all caps for emphasis */
+  margin-bottom: 20px;
+  position: relative;
+  text-align: center; /* Center header text */
+}
+.header::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #4CAF50, #2e7d32);
+  position: absolute;
+  bottom: -8px;
+  border-radius: 2px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 2px 4px 12px rgba(0,0,0,0.18);
+    margin-top: 32px;
+    margin-left: 18px;
+}
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+    margin-top: 18px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    text-shadow: 1px 2px 8px rgba(0,0,0,0.15);
+    margin-left: 8px;
+  }
+}
+#taskinput {
+    width: 350px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 25px;
+    background: #f7f8fa;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+.taskbutton {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    margin-left: 5px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.taskbutton:hover {
+    background: linear-gradient(135deg, #45a049, #3e9143);
+    box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Active click effect */
+.taskbutton:active {
+    transform: translateY(0px);
+    box-shadow: 0 3px 8px rgba(76, 175, 80, 0.3);
+}
+
+.remove-btn {
+    background: linear-gradient(135deg, #ff4d4d, #e64545);
+    color: white;
+    font-weight: 600;
+    padding: 10px 15px;
+    margin-left: 8px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.remove-btn:hover {
+    background: linear-gradient(135deg, #e64545, #cc3c3c);
+    box-shadow: 0 6px 16px rgba(255, 77, 77, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Active click effect */
+.remove-btn:active {
+    transform: translateY(0px);
+    box-shadow: 0 3px 8px rgba(255, 77, 77, 0.3);
+}
+
+#taskList {
+    list-style: none;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* better spacing than margin-bottom on li */
+}
+
+#taskList li {
+    display: flex;               
+    justify-content: space-between; 
+    align-items: center;         
+    background: #ffffff;
+    padding: 12px 18px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    width: 90%;
+    max-width: 800px; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for list item */
+#taskList li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+    appearance: none;        
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    width: 26px;
+    height: 26px;
+    border: 2px solid #4CAF50; 
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    background-color: white;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover on checkbox */
+input[type="checkbox"]:hover {
+    transform: scale(1.1);
+    border-color: #43a047;
+}
+
+/* Checked style */
+input[type="checkbox"]:checked {
+    background-color: #4CAF50;
+}
+
+/* Tick mark */
+input[type="checkbox"]:checked::after {
+    content: "✔";
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
+
+/* Strike-through completed task text */
+#taskList li.completed span {
+    text-decoration: line-through;
+    color: #888;
+}
+
+#progress {
+  font-size: 30px;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Mobile version (max width 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  .header {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 8px !important;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .container {
+    width: 100vw ;
+    max-width: 100vw ;
+    margin: 0 ;
+    padding: 0 ;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 10px;
+  }
+  h1 {
+    font-size: 2rem;
+    margin-top: 18px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    text-shadow: 1px 2px 8px rgba(0,0,0,0.15);
+    margin-left: 8px;
+  }
+  #taskinput {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 20px;
+  }
+  .taskbutton {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    margin-left: 0;
+  }
+  #taskList {
+    width: 100vw;
+    max-width: 100vw;
+    align-items: stretch;
+    margin-top:15px;
+    box-sizing: border-box;
+  }
+  #taskList li {
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 4px;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  #taskList li span {
+      margin-right: 5px;
+      margin-left: 5px;
+      word-break: break-word;
+  }
+  input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+  }
+  .remove-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
