@@ -48,15 +48,15 @@ def toggle_task(request, task_id):
             return JsonResponse({"success": False}, status=404)
     return redirect("home")
 
+@csrf_exempt
 def clear_tasks(request):
     if request.method == "POST":
         Task.objects.all().delete()
+        if request.content_type == 'application/json':
+            return JsonResponse({"success": True})
     return redirect("home")
 
 def get_tasks(request):
     tasks = Task.objects.all().values('id', 'title', 'completed')
     return JsonResponse(list(tasks), safe=False)
-def clear_tasks(request):
-    Task.objects.all().delete()
-    return redirect("home")
 
